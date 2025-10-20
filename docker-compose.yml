@@ -1,0 +1,52 @@
+services:
+  api:
+    image: oven/bun:latest
+    container_name: bunjs
+    ports:
+      - "3000:3000"
+    command: ["bun", "run", "index.ts"]
+    volumes:
+      - ./backend:/home/bun/app
+    depends_on:
+      - db
+    networks:
+      app-network:
+        aliases:
+          - api.local
+      
+  db:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: teste
+      MYSQL_USER: userteste
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      app-network:
+        aliases:
+          - db.local
+
+  hosting:
+    image: httpd:latest
+    container_name: httpd_host
+    ports: 
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/local/apache2/htdocs/
+    networks:
+      app-network:
+        aliases:
+          - hosting.local
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
+    name: app-network
