@@ -3,10 +3,10 @@ services:
     image: oven/bun:latest
     container_name: bunjs
     ports:
-      - "3000:3000"
-    command: ["bun", "run", "index.ts"]
+      - "80:80"
+    command: ["bun", "run", "--hot", "index.ts"]
     volumes:
-      - ./backend:/home/bun/app
+      - ./hybrid:/home/bun/app
     depends_on:
       - db
     networks:
@@ -30,18 +30,6 @@ services:
       app-network:
         aliases:
           - db.local
-
-  hosting:
-    image: httpd:latest
-    container_name: httpd_host
-    ports: 
-      - "80:80"
-    volumes:
-      - ./frontend:/usr/local/apache2/htdocs/
-    networks:
-      app-network:
-        aliases:
-          - hosting.local
 
 volumes:
   mysql_data:
