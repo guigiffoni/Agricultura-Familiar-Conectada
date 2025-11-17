@@ -1,6 +1,9 @@
 customElements.define("search-bar", class SearchBar extends HTMLElement {
     constructor() {
         super();
+
+        this.searchInput;
+        this.searchButton;
     }
 
     connectedCallback() {
@@ -35,47 +38,46 @@ customElements.define("search-bar", class SearchBar extends HTMLElement {
                     padding: 1ch 1.5ch;
                     font-size: 1em;
                     background: transparent;
-                    width: 40ch;
+                    width: 100%;
                 }
 
                 .search-button {
                     border: none;
-                    background: #2ecc71;
-                    color: white;
-                    border-radius: 50%;
                     width: 3em;
                     height: 3em;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    background-color: transparent;
                     cursor: pointer;
                 }
             </style>
         `;
 
+        this.searchInput = this.querySelector('input');
+        this.searchButton = this.querySelector('.search-button');
+
         this.setupEventListeners();
     }
 
+    searchEvent() {
+        let searchTerm = this.searchInput.value.trim();
+
+        if (searchTerm) {
+            this.dispatchEvent(new CustomEvent('search', {
+                detail: { term: searchTerm },
+                bubbles: true
+            }));
+        }
+    }
+
     setupEventListeners() {
-        const searchInput = this.querySelector('.search-input');
-        const searchButton = this.querySelector('.search-button');
-
-        const executeSearch = () => {
-            const searchTerm = searchInput.value.trim();
-            if (searchTerm) {
-                this.dispatchEvent(new CustomEvent('search', {
-                    detail: { term: searchTerm },
-                    bubbles: true
-                }));
-            }
-        };
-
-        searchInput.addEventListener('keypress', (event) => {
+        this.searchInput.addEventListener('keydown', event => {
             if (event.key === 'Enter') {
-                executeSearch();
+                this.searchEvent();
             }
         });
 
-        searchButton.addEventListener('click', executeSearch);
+        this.searchButton.addEventListener('click', this.searchEvent());
     }
 });

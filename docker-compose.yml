@@ -8,28 +8,23 @@ services:
     volumes:
       - ./hybrid:/home/bun/app
     depends_on:
-      - db
-    networks:
-      app-network:
-        aliases:
-          - api.local
+      - database
       
-  db:
+  database:
     image: mysql:latest
+    user: "mysql:mysql"
     container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: teste
+      MYSQL_DATABASE: agrofamlink
       MYSQL_USER: userteste
       MYSQL_PASSWORD: userpass
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      app-network:
-        aliases:
-          - db.local
+      - type: bind
+        source: mysql_data
+        target: /var/lib/mysql
 
 volumes:
   mysql_data:

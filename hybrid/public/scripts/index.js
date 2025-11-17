@@ -1,0 +1,1 @@
+JSON.fetch("/api/produtos").then(populateProductDisplay);

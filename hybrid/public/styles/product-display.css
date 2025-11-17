@@ -1,0 +1,27 @@
+.product-display {
+    display: flex;
+    gap: 2ch;
+    flex-wrap: wrap;
+    margin-left: 4ch;
+}
+
+.products {
+    max-width: 24ch;
+    height: 36ch;
+    border: thin solid;
+}
+
+.product-image {
+    height: 24ch;
+    width: 24ch;
+}
+
+.product-content {
+    padding: 2ch;
+}
+
+.product-price {
+    display: block;
+    width: 100%;
+    text-align: right;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultura Familiar Integrada</title>
+
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/products.css">
+    <link rel="stylesheet" href="/styles/product-display.css">
+</head>
+
+<body>
+    <header>
+        <search-bar></search-bar>
+        <a href="">👤 Acessar Conta</a>
+        <a href="">Carrinho R$ 0,00</a>
+    </header>
+    <main>
+        <section id="filters">
+            <div>
+                <p>Categorias</p>
+                <ul>
+                    <!-- inserir... -->
+                </ul>
+            </div>
+
+            <div>
+                <p>Preço</p>
+                <div id="price-range">
+                    <div class="form-cell">
+                        <span>Mínimo</span>
+                        <input type="number" name="" id="minimum-price" step="1"/>
+                    </div>
+                    <div class="form-cell">
+                        <span>Máximo</span>
+                        <input type="number" name="" id="maximum-price" step="1"/>
+                    </div>
+                    <button id="apply-price-filter">Aplicar</button>
+                </div>
+            </div>
+        </section>
+        <div>
+            <section id="opcoes-exibicao">
+                <div>
+                    <span>Exibir</span>
+                    <select name="" id="">
+                        <option value="10">10</option>
+                        <option value="20">25</option>
+                        <option value="30">50</option>
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+            </section>
+            <section class="product-display"></section>
+        </div>
+    </main>
+
+    <script src="/scripts/base.js"></script>
+    <script src="/scripts/products.js"></script>
+
+    <script src="/custom-elements/product-card.js"></script>
+    <script src="/custom-elements/search-bar.js"></script>
+</body>
+
+</html>

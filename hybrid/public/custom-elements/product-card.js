@@ -84,6 +84,7 @@ customElements.define("product-card", class ProductCard extends HTMLElement {
                     font-size: 1.25em;
                     font-weight: bold;
                     line-height: 1.25;
+                    height: 4ch;
                 }
                         
                 .price-section {
@@ -137,6 +138,9 @@ customElements.define("product-card", class ProductCard extends HTMLElement {
                     color: white;
                     border: none;
                     cursor: pointer;
+                    background-color: hsl(145 75% 50% / 1);
+                    font-size: 1.4em;
+                    border-radius: 0.5ch;
                 }
             </style>`
         );

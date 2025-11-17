@@ -1,0 +1,30 @@
+#filters {
+    padding: 3ch;
+    background-color: lightgray;
+}
+
+#price-range {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5ch;
+    width: 24ch;
+}
+
+#price-range > .form-cell {
+    width: 100%;
+}
+
+#price-range > .form-cell > input {
+    width: 100%;
+}
+
+#price-range > button {
+    grid-column: span 2;
+    font-size: 1.5rem;
+    background-color: lightgreen;
+    border-radius: 0.5ch;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

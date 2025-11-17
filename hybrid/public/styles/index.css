@@ -1,0 +1,31 @@
+#home-navigation {
+    border: thin solid;
+    height: fit-content;
+    padding: 1ch;
+}
+
+#categories-title {
+    border-bottom: thin solid green;
+    text-align: center;
+    width: 100%;
+}
+
+.categories {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    width: 28ch;
+}
+
+.main-category > a {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    width: 100%;
+    padding: 1ch;
+}
+
+.main-category > a:hover {
+    text-decoration: underline;
+    background-color: lightyellow;
+}
